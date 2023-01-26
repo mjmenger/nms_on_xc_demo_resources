@@ -13,6 +13,23 @@ This Terraform example will deploy multiple NGINX Plus instances with the NGINX 
 ## Deployment
 
 > Note: You will need to save your *nginx-repo.crt*, *nginx-repo.key*, agent.crt and agent.key files in the base folder of this project.
+### Avoiding expired certificates
+verify that your certificates won't expire in the next 24 hours
+```bash
+openssl x509 -checkend 86400 -noout -in nginx-repo.crt
+openssl x509 -checkend 86400 -noout -in agent.crt
+```
+or check when the certificates will expire
+```bash
+openssl x509 -enddate -noout -in nginx-repo.crt
+openssl x509 -enddate -noout -in agent.crt
+```
+or deploy using Terragrunt
+```bash
+terragrunt init
+terragrunt apply 
+```
+
 
 Run the following Terraform commands to deploy the environment:
 
