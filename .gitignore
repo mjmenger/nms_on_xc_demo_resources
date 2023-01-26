@@ -34,3 +34,6 @@ terraform.tfvars
 agent.crt
 agent.key
 agent.csr
+
+# terragrunt files
+**/.terragrunt-cache/*
